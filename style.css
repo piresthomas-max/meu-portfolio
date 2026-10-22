@@ -1,0 +1,451 @@
+:root{
+    /* Fontes */
+    --fonte-primaria: "Inter", sans-serif;
+
+    /* Backgrounds */
+    --bg-primario: #f6f6f6;
+    --bg-secundario: #ffffff;
+
+    --bg-btn-primario: #BC0707;
+    --bg-btn-secundario: transparent;
+
+    /* Bordas */
+    --border-btn: 0.0625rem solid #BC0707;
+    --border-input: 0.125rem solid #BC0707; 
+
+    --border-radius-16: 1rem;
+    --border-radius-24: 1.5rem;
+    --border-radius-32: 2rem; 
+  
+    /* Cores */
+    --cor-texto: #868686;
+    --cor-titulo: #1c1c1c;
+    --cor-btn-primario: #ffffff;
+    --cor-btn-secundario: #bc0707;
+    --cor-gradiente: linear-gradient( 130deg, #bc0707, #ff3300);
+    /* --cor-gradiente: linear-gradient( direção, cor1, cor2, cor3... ) */
+}
+
+/* Linpando estilos padrões do navegador */
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/* Estilos gerais */
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: var(--fonte-primaria);
+    background: var(--bg-primario);
+}
+
+header{
+    background: var(--bg-secundario);
+    position: sticky;
+    top: 0%;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;  /* Alinhando no eixo vertical - Y */
+    justify-content: space-between; 
+    
+    padding: .5rem 1rem;
+}
+
+header > a {
+    color: var(--cor-titulo);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+header nav button{
+    border: none;
+    background: none;
+    
+    width: 3rem;
+    height: 3rem;
+
+    color: #BC0707;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header nav ul{
+    display: none;
+}
+
+header nav ul a {
+    font-size: 1.25rem;
+    color: var(--cor-texto);
+    font-weight: 500;
+}
+
+main section {
+    padding: 0.5rem 2rem;
+}
+
+.hero-section{
+    height: 90dvh;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-section h1{
+    font-size: clamp(3rem, 5vw, 5rem);
+    /* font-size: clamp(valor-minimo, valor-preferido, valor-maximo); */
+    color: var(--cor-titulo);
+    margin-bottom: .5rem;
+
+    animation-name: texto-subindo;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.hero-section h1 span, 
+.sobre-section h2 span, 
+.contato-section h2 span{
+    background-image: var(--cor-gradiente);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: 300% 300%;
+    background-position: 0% 50%;
+    /* Background-position: X Y; */
+
+    animation-name: gradiente-animado;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+.hero-section p{
+    color: var(--cor-texto);
+    font-size: clamp(1.125rem, 3vw, 1.5rem);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    max-width: 40ch;
+
+    animation-name: texto-subindo;
+    animation-duration: 1s;
+    animation-delay: 200ms;
+    animation-fill-mode: both;
+}
+
+.hero-section ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 25rem;
+    width: 100%;
+
+    animation-name: texto-subindo;
+    animation-duration: 2s;
+    animation-delay: 400ms;
+    animation-fill-mode: both;
+}
+
+    .hero-section ul a{
+    border-radius: var(--border-radius-24);
+    font-size: 1rem;
+
+    width: 100%;
+    height: 3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section ul a[href="#projetos"]{
+    background-color: var(--bg-btn-primario);
+    color: var(--cor-btn-primario);
+}
+
+.hero-section ul a[href="#contato"]{
+    border: var(--border-btn);
+    color: var(--cor-btn-secundario);
+    background-color: var(--bg-btn-secundario);
+}
+
+.sobre-section, 
+.projetos-section, 
+.contato-section{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    text-align: center;
+}
+
+.sobre-section{
+     background-color: var(--bg-secundario);
+}
+
+.sobre-section h2, 
+.projetos-section h2, 
+.contato-section h2{
+    font-size: clamp(2.5rem, 5vw, 3rem);
+    color: var(--cor-titulo);
+    margin-bottom: 1rem;
+}
+
+.sobre-section p, 
+.projetos-section p, 
+.contato-section p{
+    color: var(--cor-texto);
+    font-size: clamp(1.125rem, 3vw, 1.5rem);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.sobre-section img{
+    height: 30rem;
+    width: 100%;
+    border-radius: var(--border-radius-32);
+    object-fit: cover;
+}
+
+.projetos-section ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.projetos-section article{
+    background-color: var(--bg-secundario);
+    border-radius: var(--border-radius-24);
+    overflow: hidden;
+}
+
+.projetos-section img{
+    height: 10rem;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius-24);
+}
+
+.projetos-section .card-texto{
+    padding: 1dvh;
+    text-align: left;
+}
+
+.card-texto h3{
+    font-size: 1.25rem;
+    margin-bottom: .5rem;
+    color: var(--cor-titulo);
+}
+
+.card-texto a{
+    background: var(--bg-btn-secundario);
+
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    border-radius: var(--border-radius-16);
+    padding: .5rem 1rem;
+    color: var(--cor-titulo);
+
+    font-weight: 500;
+}
+
+.contato-section form{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+
+    border-radius: var(--border-radius-24);
+
+    background: var(--bg-secundario);
+    width: 100%;
+}
+.contato-section 
+form div{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.contato-section 
+form label{
+    color: var(--cor-titulo);
+    font-size: 1rem;
+}
+
+form input, 
+form textarea{
+    padding: 0.625rem 1rem;
+    border: var(--border-input);
+}
+
+form input, 
+form textarea, 
+form button{
+    border-radius: var(--border-radius-16);
+}
+
+form input, 
+form button{
+    height: 3rem;
+    width: 100%;
+}
+
+form textarea{
+    height: 15rem;
+}
+
+form button{
+    border: none;
+    background-color: var(--bg-btn-primario);
+    color: var(--cor-btn-primario);
+
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+footer{
+    padding: 1.5rem 1rem;
+    background-color: var(--bg-secundario);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+footer p, footer a{
+    color: var(--cor-texto);
+}
+
+footer nav ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+footer nav ul a{
+    display: flex;
+    align-items: center;
+}
+
+/* Ajustando responsividade */
+
+@media screen and (min-width: 48rem){
+
+    header, footer{
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    main section {
+        padding: 0.5rem 2rem;
+    }
+
+    .sobre-section img{
+        margin-top: 2rem;
+        height: 40rem;
+        border-radius: 4rem;
+    }
+
+    .projetos-section article p{
+        font-size: 1rem;
+    }
+
+    .projetos-section img{
+        height: 12rem;
+    }
+
+    .projetos-section ul{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .contato-section p{
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 40ch;
+        margin-bottom: 2rem;
+    }
+
+    .contato-section form{
+        max-width: 30rem;
+        margin: auto;
+    }
+}
+
+/* DESKTOP */
+@media screen and (min-width: 64rem){
+    header nav button{
+        display: none;
+    }
+
+    header nav ul{
+        display: flex;
+        align-items: center;
+        gap: 1.75rem;
+    }
+
+    .hero-section ul,
+    .sobre-section, 
+    .contato-section{
+        display: grid;
+        grid-template-columns:1fr 1fr;
+    }
+
+    .sobre-section{
+        gap: 2rem;
+        text-align: left;
+    }
+
+    .sobre-section img{
+        margin: 0;
+    }
+
+    .projetos-section ul{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+/* Animações */
+@keyframes gradiente-animado{
+    0%{
+        background-position: 0% 50%;
+    }
+
+    50%{
+        background-position: 100% 50%;
+    }
+
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes texto-subindo{
+    from{
+        opacity: 0;
+        transform: translateY(2rem);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    
+}
